@@ -17,7 +17,17 @@ end
 
 def book_for_id(id)
   client = Goodreads.new()
-  return client.book(id)
+  result = client.book(id)
+  title = result.title
+  author_id = nil
+  # Goodreads appears to store these slightly differently lol
+  if result.authors.author.instance_of? Array
+    author_id = result.authors.author[0].id
+  else
+    author_id = result.authors.author.id
+  end
+  author = client.author(author_id)
+  puts "\"#{title}\", by #{author.name}, Hometown: #{author.hometown}, Gender: #{author.gender}"
 end
 
 def books_read_by_user(user_id)

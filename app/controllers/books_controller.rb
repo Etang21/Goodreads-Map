@@ -24,9 +24,28 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    # Here we extract the proper book params from the Goodreads API
-    # Using the goodid to index
-    @book = Book.new(book_params)
+    # Here we extract the proper book params from the Goodreads API for goodid
+    client = Goodreads::Client.new(api_key: "msEIA0FG34FG9peoBVH5g")
+    puts book_params
+    gr_book = client.book(book_params[:goodid])
+    puts gr_book
+    # Goodreads appears to store author sometimes as an array, sometimes not
+    author_id = nil
+    if gr_book.authors.author.instance_of? Array
+      author_id = gr_book.authors.author[0].id
+    else
+      author_id = gr_book.authors.author.id
+    end
+    author = client.author(author_id)
+    our_params = {
+      goodid: book_params[:goodid],
+      title: gr_book.title,
+      author: author.name,
+      hometown: author.hometown,
+      gender: author.gender
+    }
+    puts our_params
+    @book = Book.new(our_params)
 
     respond_to do |format|
       if @book.save
