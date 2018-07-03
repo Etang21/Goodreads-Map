@@ -5,18 +5,25 @@
 class UserController < ApplicationController
 
   def index
-    #Here we would fill in the code to get books
+    # Get books from the appropriate ID
+    # Could pass this logic off to the model
     user_id = 79913579 #TODO: CURRENTLY HARDCODED TO ERIC'S ID
+    # Eric's ID: 79913579
     @user_id = user_id
     client = Goodreads::Client.new(api_key: "msEIA0FG34FG9peoBVH5g")
     shelf = client.shelf(@user_id, "read")
-    @user_shelf = shelf
     puts "Books read: #{shelf.total}"
-    shelf.books.each do |result|
-      title = result.book.title
-      author = client.author(result.book.authors.author.id)
-      puts "\"#{title}\", by #{author.name}, Hometown: #{author.hometown}, Gender: #{author.gender}"
+    @user_shelf = shelf.books.map do |result|
+      bk = Book.new(title: result.book.title, goodid: result.book.id, author: result.book.authors.author.name, author_id: result.book.authors.author.id)
+      bk.populate_demographics
+      bk
     end
+    # The following code loads all the authors and such. Takes a while:
+    # shelf.books.each do |result|
+    #   title = result.book.title
+    #   author = client.author(result.book.authors.author.id)
+    #   puts "\"#{title}\", by #{author.name}, Hometown: #{author.hometown}, Gender: #{author.gender}"
+    # end
   end
 
 end

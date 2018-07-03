@@ -1,4 +1,27 @@
-<h1> The homepage for users! </h1>
-<p> User ID: <%= @user_id %> </p>
+<h1>Welcome, user <%= @user_id %></h1>
+<p>If that ID is 79913579, this is just Eric's account.</p>
+
+<h2>Books Read: </h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Gender</th>
+    <th>Hometown</th>
+    <th>Goodreads ID</th>
+    <th>Author ID</th>
+  </tr>
+  <% @user_shelf.each do |bk| %>
+    <tr>
+      <th><%= bk.title %></th>
+      <th><%= bk.author %></th>
+      <th><%= bk.gender %></th>
+      <th><%= bk.hometown %></th>
+      <th><%= bk.goodid %></th>
+      <th><%= bk.author_id %></th>
+    </tr>
+  <% end %>
+</table>
 
 <div> User shelf: <%= @user_shelf %> </div>

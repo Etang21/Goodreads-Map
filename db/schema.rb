@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180626012127) do
     t.string "author"
     t.string "gender"
     t.string "hometown"
+    t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

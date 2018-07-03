@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration[5.1]
       t.string :author
       t.string :gender
       t.string :hometown
+      t.integer :author_id
 
       t.timestamps
     end
