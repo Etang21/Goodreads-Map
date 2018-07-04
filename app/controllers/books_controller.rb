@@ -89,10 +89,7 @@ class BooksController < ApplicationController
     @book = Book.new(author_id: params[:author_id])
     @book.populate_demographics
     respond_to do |format|
-      format.html { render html:
-        "<th>#{@book.gender}</th>
-        <th>#{@book.hometown}</th>"
-      }
+      format.html { render html: "#{@book.gender} || #{@book.hometown}", layout: false }
     end
   end
 

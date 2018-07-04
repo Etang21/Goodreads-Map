@@ -7,8 +7,9 @@ class UserController < ApplicationController
   def index
     # Get books from the appropriate ID
     # Could pass this logic off to the model
-    user_id = 29077983
+    user_id = 79913579
     # Eric's ID: 79913579
+    # Nice test ID with 12 books: 29077983
     @user_id = user_id
     client = Goodreads::Client.new(api_key: "msEIA0FG34FG9peoBVH5g")
     shelf = client.shelf(@user_id, "read")

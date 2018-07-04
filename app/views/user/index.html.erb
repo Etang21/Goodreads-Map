@@ -7,8 +7,7 @@
   <tr>
     <th>Title</th>
     <th>Author</th>
-    <th>Gender</th>
-    <th>Hometown</th>
+    <th>Author Info</th>
     <th>Goodreads ID</th>
     <th>Author ID</th>
   </tr>
@@ -16,8 +15,7 @@
     <tr>
       <th><%= bk.title %></th>
       <th><%= bk.author %></th>
-      <th><%= bk.gender %></th>
-      <th><%= bk.hometown %></th>
+      <th class="demographics" id=<%= bk.author_id %> ></th>
       <th><%= bk.goodid %></th>
       <th><%= bk.author_id %></th>
     </tr>
