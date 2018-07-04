@@ -7,7 +7,7 @@ class UserController < ApplicationController
   def index
     # Get books from the appropriate ID
     # Could pass this logic off to the model
-    user_id = 79913579 #TODO: CURRENTLY HARDCODED TO ERIC'S ID
+    user_id = 29077983
     # Eric's ID: 79913579
     @user_id = user_id
     client = Goodreads::Client.new(api_key: "msEIA0FG34FG9peoBVH5g")
@@ -15,7 +15,8 @@ class UserController < ApplicationController
     puts "Books read: #{shelf.total}"
     @user_shelf = shelf.books.map do |result|
       bk = Book.new(title: result.book.title, goodid: result.book.id, author: result.book.authors.author.name, author_id: result.book.authors.author.id)
-      bk.populate_demographics
+      # bk.populate_demographics
+      # Above is commented out to speed loading time while testing
       bk
     end
     # The following code loads all the authors and such. Takes a while:
