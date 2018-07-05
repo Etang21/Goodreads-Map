@@ -82,17 +82,6 @@ class BooksController < ApplicationController
     end
   end
 
-  # Get HTML of author and hometown
-  # DEMOGRAPHICS /books/
-  def demographics
-    puts params[:author_id]
-    @book = Book.new(author_id: params[:author_id])
-    @book.populate_demographics
-    respond_to do |format|
-      format.html { render html: "#{@book.gender} || #{@book.hometown}", layout: false }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book

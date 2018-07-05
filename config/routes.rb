@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :books
-  root 'books#index'
+  root 'user#index'
   get '/user', to: 'user#index'
-  get '/demographics', to: 'books#demographics'
+
+  resources :books
 
   namespace :api do
     namespace :v1 do
