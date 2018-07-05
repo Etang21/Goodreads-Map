@@ -35,7 +35,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'goodreads', '~> 0.6.1'
 # Use JQuery in Rails
 gem 'jquery-rails', '~> 4.3'
-
+# Use React
+gem 'react-rails', '~> 1.7', '>= 1.7.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

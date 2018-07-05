@@ -41,6 +41,10 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (10.0.2)
@@ -61,6 +65,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
@@ -142,6 +147,12 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    react-rails (1.11.0)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -213,6 +224,7 @@ DEPENDENCIES
   pg (= 0.20.0)
   puma (~> 3.7)
   rails (~> 5.1.4)
+  react-rails (~> 1.7, >= 1.7.1)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

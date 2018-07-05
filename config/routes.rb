@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :authors, only: [:index]
+      # API endpoint: api/v1/authors.json?author_id=___
     end
   end
 
