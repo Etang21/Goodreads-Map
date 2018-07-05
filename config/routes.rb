@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'user#index'
-  get '/user', to: 'user#index'
+  root 'home#index'
+  get '/home', to: 'home#index'
 
   resources :books
 
