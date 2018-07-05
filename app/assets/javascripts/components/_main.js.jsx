@@ -4,8 +4,7 @@ class Main extends React.Component {
     super(props);
     console.log("Props to Main:", props)
     this.state = {
-      userID: '',
-      shelf: null,
+      user_id: '',
       page: 'login'
     }
     this.handleLoginChange = this.handleLoginChange.bind(this);
@@ -13,7 +12,7 @@ class Main extends React.Component {
   }
 
   handleLoginChange(event) {
-    this.setState({userID: event.target.value})
+    this.setState({user_id: event.target.value})
   }
 
   handleLoginSubmit(event) {
@@ -25,14 +24,19 @@ class Main extends React.Component {
   render() {
     if (this.state.page == 'login') {
       return (
-        <Login userID={this.state.userID} handleSubmit={this.handleLoginSubmit} handleChange={this.handleLoginChange}/>
+        <Login user_id={this.state.user_id} handleSubmit={this.handleLoginSubmit} handleChange={this.handleLoginChange}/>
+      )
+    }
+    if (this.state.page == 'body') {
+      return (
+        <Body user_id={this.state.user_id} />
       )
     }
     return (
       <div>
-        <p>We are on body page</p>
+        <p>Error. Not on an actual page.</p>
       </div>
-    )
+    );
   }
 
 }
