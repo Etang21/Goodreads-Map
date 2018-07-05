@@ -33,8 +33,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Goodreads API
 gem 'goodreads', '~> 0.6.1'
-# Use JQuery in Rails
-gem 'jquery-rails', '~> 4.3'
 # Use React
 gem 'react-rails', '~> 1.7', '>= 1.7.1'
 
