@@ -8,9 +8,9 @@ class BookTable extends React.Component {
   }
 
   render() {
-    console.log("Shelf is: ", this.state.shelf)
+    // console.log("Shelf is: ", this.state.shelf)
     var shelf_rows = this.state.shelf.map ((book) => {
-      console.log(book);
+      // console.log(book);
       return (
         <div key={book.goodid}>
           <BookRow book={book} />
