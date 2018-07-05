@@ -6,9 +6,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :authors, only: [:index]
-      resources :shelves, only: [:index]
-      # API endpoint: api/v1/authors.json?author_id=___
+      resources :authors, only: [:index] #Takes author_id param
+      resources :shelves, only: [:index] #Takes user_id param
     end
   end
 

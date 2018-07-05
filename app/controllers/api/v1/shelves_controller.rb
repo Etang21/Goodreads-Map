@@ -1,8 +1,7 @@
 class Api::V1::ShelvesController < ApplicationController
 
-  # Get shelf of user's books. Eventually could use API endpoint for this.
+  # Get shelf of user's books. Eric's ID: 79913579
   def index
-    # Eric's ID: 79913579
     client = Goodreads::Client.new(api_key: "msEIA0FG34FG9peoBVH5g")
     shelf = client.shelf(params[:user_id], "read")
     @user_shelf = shelf.books.map do |result|
@@ -13,5 +12,11 @@ class Api::V1::ShelvesController < ApplicationController
 
   # Currently no Create, Update, Delete functionality, since we don't store
   # anything in the database. Could be changed later.
+
+  private
+
+  def shelf_params
+    params.require(:shelf).permit(:id, :user_id)
+  end
 
 end
