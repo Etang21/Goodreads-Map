@@ -4,16 +4,33 @@ class Main extends React.Component {
     super(props);
     console.log("Props to Main:", props)
     this.state = {
-      user_id: null,
+      userID: '',
       shelf: null,
       page: 'login'
     }
+    this.handleLoginChange = this.handleLoginChange.bind(this);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+  }
+
+  handleLoginChange(event) {
+    this.setState({userID: event.target.value})
+  }
+
+  handleLoginSubmit(event) {
+    this.setState({page: 'body'})
+    console.log(this.state)
+    event.preventDefault()
   }
 
   render() {
+    if (this.state.page == 'login') {
+      return (
+        <Login userID={this.state.userID} handleSubmit={this.handleLoginSubmit} handleChange={this.handleLoginChange}/>
+      )
+    }
     return (
       <div>
-        <p>Testing the Main Page</p>
+        <p>We are on body page</p>
       </div>
     )
   }
