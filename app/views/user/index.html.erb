@@ -1,4 +1,6 @@
-<h1>Welcome, user <%= @user_id %></h1>
+<%= react_component("Main", props = { user_id: @user_id, shelf: @user_shelf}) %>
+
+<!-- <h1>Welcome, user <%= @user_id %></h1>
 <p>If that ID is 79913579, this is just Eric's account.</p>
 
 <h2>Books Read: </h2>
@@ -22,4 +24,4 @@
   <% end %>
 </table>
 
-<div> User shelf: <%= @user_shelf %> </div>
+<div> User shelf: <%= @user_shelf %> </div> -->
