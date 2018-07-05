@@ -4,13 +4,24 @@ class Body extends React.Component {
     super(props);
     console.log("Props to Body:", props)
     this.state = {
-      shelf: props.shelf,
-      user_id: props.user_id
+      user_id: props.user_id,
+      shelf: []
     }
   }
 
   componentDidMount() {
-    // Go through and clean this code up afterwards!
+    //Fetch shelf, update all demographic data:
+    fetch('api/v1/shelves.json?user_id=' + this.state.user_id)
+      .then((response) => { return response.json() })
+      .then((data) => {
+        this.setState({shelf: data})
+        console.log("State after fetching shelf:", this.state)
+        this.updateDemographicData()
+      })
+  }
+
+  // For all the books in our state's shelf, fetch and update the demographic data
+  updateDemographicData() {
     this.state.shelf.forEach( (bk) => {
       fetch('api/v1/authors.json?author_id=' + bk.author_id)
         .then((response) => { return response.json() })
@@ -38,10 +49,11 @@ class Body extends React.Component {
   }
 
   render() {
+    console.log("We're in render and the state is ", this.state)
     return (
       <div>
         <h1>Welcome, user {this.state.user_id}!</h1>
-        <BookTable shelf={this.state.shelf}/>
+        <BookTable shelf={this.state.shelf} />
       </div>
     )
   }

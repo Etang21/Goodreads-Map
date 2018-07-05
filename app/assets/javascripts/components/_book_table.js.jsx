@@ -2,6 +2,7 @@ class BookTable extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log("We're in the BookTable constructor and props is ", props)
     this.state = {
       shelf: props.shelf
     }
