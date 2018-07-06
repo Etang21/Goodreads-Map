@@ -2,20 +2,17 @@ class Body extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log("Props to Body:", props)
     this.state = {
-      user_id: props.user_id,
       shelf: []
-    }
+    };
   }
 
   componentDidMount() {
     //Fetch shelf, update all demographic data:
-    fetch('api/v1/shelves.json?user_id=' + this.state.user_id)
+    fetch('api/v1/shelves.json?user_id=' + this.props.user_id)
       .then((response) => { return response.json() })
       .then((data) => {
         this.setState({shelf: data})
-        console.log("State after fetching shelf:", this.state)
         this.updateDemographicData()
       })
   }
@@ -49,10 +46,9 @@ class Body extends React.Component {
   }
 
   render() {
-    console.log("We're in render and the state is ", this.state)
     return (
       <div>
-        <h1>Welcome, user {this.state.user_id}!</h1>
+        <h1>Welcome, user {this.props.user_id}!</h1>
         <BookTable shelf={this.state.shelf} />
       </div>
     )

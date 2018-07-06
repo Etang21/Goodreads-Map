@@ -1,26 +1,12 @@
-class BookRow extends React.Component {
-
-  constructor(props) {
-    super(props);
-    // console.log("BookRow props:", props)
-    this.state = {
-      book: props.book
-    }
-  }
-
-  render() {
-    // console.log("Book:", this.state.book)
-    var bk = this.state.book
-    return (
-      <tr>
-        <td>{bk.title}</td>
-        <td>{bk.author}</td>
-        <td>{bk.gender}</td>
-        <td>{bk.hometown}</td>
-        <td>{bk.goodid}</td>
-        <td>{bk.author_id}</td>
-      </tr>
-    )
-  }
-
+const BookRow = ({book}) => {
+  return (
+    <tr>
+      <td>{book.title}</td>
+      <td>{book.author}</td>
+      <td>{book.gender}</td>
+      <td>{book.hometown}</td>
+      <td>{book.goodid}</td>
+      <td>{book.author_id}</td>
+    </tr>
+  )
 }

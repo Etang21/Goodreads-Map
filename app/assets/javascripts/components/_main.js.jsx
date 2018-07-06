@@ -2,7 +2,6 @@ class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log("Props to Main:", props)
     this.state = {
       user_id: '',
       page: 'login'
@@ -17,7 +16,6 @@ class Main extends React.Component {
 
   handleLoginSubmit(event) {
     this.setState({page: 'body'})
-    console.log(this.state)
     event.preventDefault()
   }
 
