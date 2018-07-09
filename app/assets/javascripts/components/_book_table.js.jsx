@@ -1,23 +1,23 @@
 const BookTable = ({shelf}) => {
   var shelf_rows = shelf.map ((book) => {
     return (
-      <div key={book.goodid}>
-        <BookRow book={book} />
-      </div>
+      <BookRow book={book} key={book.goodid}/>
     );
   })
 
   return (
-    <table>
-      <tbody>
+    <table className="table">
+      <thead>
         <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Gender</th>
-          <th>Hometown</th>
-          <th>Goodreads ID</th>
-          <th>Author ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Hometown</th>
+          <th scope="col">Goodreads ID</th>
+          <th scope="col">Author ID</th>
         </tr>
+      </thead>
+      <tbody>
         {shelf_rows}
       </tbody>
     </table>
