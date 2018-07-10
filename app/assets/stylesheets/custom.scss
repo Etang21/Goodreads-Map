@@ -1,3 +1,7 @@
+// CSS files that get applied everywhere
+// Serves same purpose as application.css
+// Rails tutorial uses this file, however
+
 .login-panel {
   max-width: 60%;
   margin: auto;
@@ -34,7 +38,6 @@
     transform: rotateY(3600deg);
   }
 }
-
 
 .loading-container {
   margin: auto;
