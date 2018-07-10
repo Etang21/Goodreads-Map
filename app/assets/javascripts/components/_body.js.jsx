@@ -47,7 +47,24 @@ class Body extends React.Component {
     return book
   }
 
+  // Calculates gender percentages from the current shelf as dictionary
+  genderDemographics() {
+    var genders = new Map()
+    var shelf = this.state.shelf
+    for (i = 0; i < shelf.length; i++) {
+      var gender = shelf[i]["gender"] || "unknown"
+      if (!genders.has(gender)) {
+        genders.set(gender, 0)
+      }
+      genders.set(gender, genders.get(gender) + 1)
+    }
+    console.log("Genders demographics: ", genders)
+    return genders
+  }
+
+
   render() {
+    this.genderDemographics()
     return (
       <div>
         <h1>Welcome, user {this.props.user_id}!</h1>
