@@ -3,7 +3,8 @@ class Body extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      shelf: []
+      shelf: [],
+      shelfLoading: true
     };
   }
 
@@ -13,6 +14,7 @@ class Body extends React.Component {
       .then((response) => { return response.json() })
       .then((data) => {
         this.setState({shelf: data})
+        this.setState({shelfLoading: false})
         this.updateDemographicData()
       })
   }
@@ -49,7 +51,7 @@ class Body extends React.Component {
     return (
       <div>
         <h1>Welcome, user {this.props.user_id}!</h1>
-        <BookTable shelf={this.state.shelf} />
+        <BookTable shelf={this.state.shelf} shelfLoading={this.state.shelfLoading} />
       </div>
     )
   }

@@ -1,5 +1,5 @@
 const Login = ({user_id, handleSubmit, handleChange}) => (
-  <div className="jumbotron">
+  <div className="jumbotron login-panel">
     <h1 className="display-4">Welcome to the Goodreads Map</h1>
     <form  onSubmit={handleSubmit} onChange={handleChange}>
       <div className="form-group">
