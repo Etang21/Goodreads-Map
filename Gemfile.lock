@@ -216,6 +216,7 @@ DEPENDENCIES
   goodreads (~> 0.6.1)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  oauth (~> 0.5.1)
   pg (= 0.20.0)
   puma (~> 3.7)
   rails (~> 5.1.4)
