@@ -1,11 +1,7 @@
-const Login = ({user_id, handleSubmit, handleChange}) => (
+const Login = ({handleSubmit}) => (
   <div className="jumbotron login-panel">
     <h1 className="display-4">Welcome to the Goodreads Map</h1>
-    <form  onSubmit={handleSubmit} onChange={handleChange}>
-      <div className="form-group">
-        <label>Goodreads ID</label>
-        <input type="text" className="form-control" value={user_id} />
-      </div>
+    <form  onSubmit={handleSubmit}>
       <p className="lead">
         <input className="btn btn-primary btn-lg" type="submit" value="Go!" />
       </p>
