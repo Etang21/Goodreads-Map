@@ -2,10 +2,6 @@ class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      user_id: '',
-      page: 'login'
-    }
     this.handleLoginChange = this.handleLoginChange.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
   }
@@ -20,14 +16,14 @@ class Main extends React.Component {
   }
 
   render() {
-    if (this.state.page == 'login') {
+    if (this.props.authorize == 0) {
       return (
-        <Login user_id={this.state.user_id} handleSubmit={this.handleLoginSubmit} handleChange={this.handleLoginChange}/>
+        <Login user_id={this.props.user_id} handleSubmit={this.handleLoginSubmit} handleChange={this.handleLoginChange}/>
       )
     }
-    if (this.state.page == 'body') {
+    if (this.props.authorize == 1) {
       return (
-        <Body user_id={this.state.user_id} />
+        <Body user_id={this.props.user_id} />
       )
     }
     return (
