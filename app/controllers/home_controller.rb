@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    if !params.key?("authorize") || !params.key?("oauth_token") # Try authorizing
+    if !(session[:token] && session[:token_secret] && params["authorize"]) # Try authorizing
       request_token = OAuth::Consumer.new(
         "msEIA0FG34FG9peoBVH5g",
         "a46rPARjz42Umqr36N2o0S72tdvPlKDlVFKD2FTYl8",
