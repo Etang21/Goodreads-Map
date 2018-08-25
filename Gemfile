@@ -33,7 +33,9 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Goodreads API
 gem 'goodreads', '~> 0.6.1'
-# Use React
+# Use webpacker:
+gem 'webpacker', '~> 3.5'
+# Use react-rails
 gem 'react-rails', '~> 1.7', '>= 1.7.1'
 # Use OAuth
 gem 'oauth', '~> 0.5.1'
