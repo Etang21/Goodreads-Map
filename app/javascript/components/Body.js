@@ -1,5 +1,6 @@
 import React from 'react'
 import BookTable from './BookTable'
+import GenderDemographicsChart from './GenderDemographicsChart'
 
 class Body extends React.Component {
 
@@ -67,10 +68,11 @@ class Body extends React.Component {
 
 
   render() {
-    this.genderDemographics()
+    var genders = this.genderDemographics()
     return (
       <div>
         <h1>Welcome, user {this.props.user_id}!</h1>
+        <GenderDemographicsChart genders={genders}></GenderDemographicsChart>
         <BookTable shelf={this.state.shelf} shelfLoading={this.state.shelfLoading} />
       </div>
     )
