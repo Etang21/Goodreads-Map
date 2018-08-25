@@ -1,3 +1,5 @@
+import React from 'react'
+
 const BookRow = ({book}) => {
   return (
     <tr>
@@ -10,3 +12,5 @@ const BookRow = ({book}) => {
     </tr>
   )
 }
+
+export default BookRow;

@@ -1,3 +1,6 @@
+import React from 'react'
+import BookTable from './BookTable'
+
 class Body extends React.Component {
 
   constructor(props) {
@@ -51,7 +54,7 @@ class Body extends React.Component {
   genderDemographics() {
     var genders = new Map()
     var shelf = this.state.shelf
-    for (i = 0; i < shelf.length; i++) {
+    for (var i = 0; i < shelf.length; i++) {
       var gender = shelf[i]["gender"] || "unknown"
       if (!genders.has(gender)) {
         genders.set(gender, 0)
@@ -72,5 +75,6 @@ class Body extends React.Component {
       </div>
     )
   }
-
 }
+
+export default Body;

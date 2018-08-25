@@ -1,3 +1,5 @@
+import React from 'react'
+
 const Login = ({handleSubmit}) => (
   <div className="jumbotron login-panel">
     <h1 className="display-4">Welcome to the Goodreads Map</h1>
@@ -8,3 +10,5 @@ const Login = ({handleSubmit}) => (
     </form>
   </div>
 );
+
+export default Login;

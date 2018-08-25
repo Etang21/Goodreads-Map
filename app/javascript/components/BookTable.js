@@ -1,3 +1,7 @@
+import React from 'react'
+import BookRow from './BookRow'
+import LoadingIcon from './LoadingIcon'
+
 const BookTable = ({shelf, shelfLoading}) => {
   //Try removing the return from this
   var shelf_rows = shelf.map ((book) => {
@@ -28,3 +32,5 @@ const BookTable = ({shelf, shelfLoading}) => {
     </div>
   )
 }
+
+export default BookTable;

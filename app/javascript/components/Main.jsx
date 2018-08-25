@@ -1,3 +1,7 @@
+import React from 'react'
+import Body from './Body'
+import Login from './Login'
+
 class Main extends React.Component {
 
   constructor(props) {
@@ -27,5 +31,6 @@ class Main extends React.Component {
       </div>
     );
   }
-
 }
+
+export default Main;
