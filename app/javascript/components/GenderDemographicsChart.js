@@ -4,17 +4,7 @@ import {PieChart, Pie} from 'recharts'
 
 const GenderDemographicsChart = ({genders}) => {
   //Takes in genders, a Map, formats properly for recharts as list of objects
-  // I swear my Javascript style will improve
-  console.log("Rendering chart, genders are" + genders)
-  console.log(genders)
-  console.log(genders.keys())
-  const gendersArr = Array.from(genders.keys())
-  var data = []
-  var i = 0
-  for (i = 0; i < gendersArr.length; i++) {
-    var key = gendersArr[i]
-    data.push({"name": key, "value": genders.get(key)})
-  }
+  const data = rechartsDataFromMap(genders)
   return (
     <PieChart width={730} height={250}>
       <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={40} outerRadius={80} fill="#8884d8" />
@@ -22,18 +12,20 @@ const GenderDemographicsChart = ({genders}) => {
   )
 }
 
-//TODO: Spin out the logic to convert dict -> list of objects into helper func.
-
-//
-// const rechartsDataFromDict = ({dict}) => {
-//   // Format dictionary of keys:counts into a list of objects for recharts
-//   var arr = []
-//   for (var key in dict) {
-//     if (dict.hasOwnProperty(key)) {
-//       arr.push([key, dict[key]])
-//     }
-//   }
-//   return arr
-// }
+const rechartsDataFromMap = (dataMap) => {
+  // Format dictionary of keys:counts into a list of objects for recharts
+  // I swear my Javascript style will improve
+  if (dataMap == null) {
+    return []
+  }
+  const keysArr = Array.from(dataMap.keys())
+  var data = []
+  var i = 0
+  for (i = 0; i < keysArr.length; i++) {
+    var key = keysArr[i]
+    data.push({"name": key, "value": dataMap.get(key)})
+  }
+  return data
+}
 
 export default GenderDemographicsChart
