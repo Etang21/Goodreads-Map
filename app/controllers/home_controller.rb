@@ -1,9 +1,10 @@
 class HomeController < ApplicationController
 
   def index
-    #TODO: Do we have to cache the token and token_secret? Could replace with just caching access_token info.
+    # This method handles the Goodreads authentication process
+    consumer = get_oauth_consumer
+
     if !(session[:token] && session[:token_secret] && params["authorize"]) # Try authorizing
-      consumer = get_oauth_consumer
       request_token = consumer.get_request_token
       session[:token] = request_token.token
       session[:token_secret] = request_token.secret
@@ -22,7 +23,6 @@ class HomeController < ApplicationController
         session[:access_token_secret] = access_token.secret
       end
       # in subsequent sessions, we'll rebuild the access token
-      consumer = get_oauth_consumer
       access_token = OAuth::AccessToken.new(consumer, session[:access_token], session[:access_token_secret])
       client = Goodreads.new(oauth_token: access_token)
       @user_id = client.user_id
