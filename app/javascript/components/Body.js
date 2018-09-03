@@ -62,7 +62,6 @@ class Body extends React.Component {
       }
       genders.set(gender, genders.get(gender) + 1)
     }
-    console.log("Genders demographics: ", genders)
     return genders
   }
 
