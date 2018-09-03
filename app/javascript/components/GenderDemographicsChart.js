@@ -14,8 +14,9 @@ const GenderDemographicsChart = ({genders}) => {
         nameKey="name"
         cx="50%"
         cy="50%"
-        innerRadius={40}
+        innerRadius={50}
         outerRadius={80}
+        paddingAngle={5}
         fill="#8884d8"
         label={label => label.name + ' (' + label.value + ')' }
         isAnimationActive={false}
