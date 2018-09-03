@@ -7,15 +7,15 @@ const GenderDemographicsChart = ({genders}) => {
   const data = rechartsDataFromMap(genders)
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
   return (
-    <PieChart width={730} height={250}>
+    <PieChart width={1000} height={600}>
       <Pie
         data={data}
         dataKey="value"
         nameKey="name"
         cx="50%"
         cy="50%"
-        innerRadius={50}
-        outerRadius={80}
+        innerRadius={150}
+        outerRadius={200}
         startAngle={0}
         endAngle={180}
         paddingAngle={5}
