@@ -16,6 +16,8 @@ const GenderDemographicsChart = ({genders}) => {
         cy="50%"
         innerRadius={50}
         outerRadius={80}
+        startAngle={0}
+        endAngle={180}
         paddingAngle={5}
         fill="#8884d8"
         label={label => label.name + ' (' + label.value + ')' }
