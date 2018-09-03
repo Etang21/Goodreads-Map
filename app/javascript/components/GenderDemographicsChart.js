@@ -3,19 +3,23 @@ import React from 'react'
 import {PieChart, Pie, Cell} from 'recharts'
 
 const GenderDemographicsChart = ({genders}) => {
-  //Takes in genders, a Map, formats properly for recharts as list of objects
+  //Takes in map of genders to values, displays chart
   const data = rechartsDataFromMap(genders)
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  //Gets viewport width and height:
+  const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  const outerRadius = Math.min(vh/4, vw/3)
   return (
-    <PieChart width={1000} height={600}>
+    <PieChart width={vw} height={2 * outerRadius}>
       <Pie
         data={data}
         dataKey="value"
         nameKey="name"
         cx="50%"
-        cy="50%"
-        innerRadius={150}
-        outerRadius={200}
+        cy="75%"
+        innerRadius={0.75 * outerRadius}
+        outerRadius={outerRadius}
         startAngle={0}
         endAngle={180}
         paddingAngle={5}
