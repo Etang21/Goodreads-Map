@@ -1,10 +1,11 @@
 // Takes in a dictionary from genders to counts, displays as chart
 import React from 'react'
-import {PieChart, Pie} from 'recharts'
+import {PieChart, Pie, Cell} from 'recharts'
 
 const GenderDemographicsChart = ({genders}) => {
   //Takes in genders, a Map, formats properly for recharts as list of objects
   const data = rechartsDataFromMap(genders)
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
   return (
     <PieChart width={730} height={250}>
       <Pie
@@ -18,7 +19,13 @@ const GenderDemographicsChart = ({genders}) => {
         fill="#8884d8"
         label={label => label.name + ' (' + label.value + ')' }
         isAnimationActive={false}
-      /> //Disable animation due to label not appearing bug in recharts
+      > //Disable animation due to invisible label bug in recharts
+        {
+          data.map((entry, index) =>
+            <Cell fill={COLORS[index % COLORS.length]} key={index}/>
+          )
+        }
+      </Pie>
     </PieChart>
   )
 }
