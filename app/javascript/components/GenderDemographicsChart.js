@@ -3,18 +3,21 @@ import React from 'react'
 import {PieChart, Pie} from 'recharts'
 
 const GenderDemographicsChart = ({genders}) => {
+  //Takes in genders, a Map, formats properly for recharts as list of objects
+  // I swear my Javascript style will improve
   console.log("Rendering chart, genders are" + genders)
   console.log(genders)
-  // var data = []
-  // for (var key in genders.keys()) {
-  //   console.log(key)
-  //   if (data.hasOwnProperty(key)) {
-  //     data.push([key, genders[key]])
-  //   }
-  // }
+  console.log(genders.keys())
+  const gendersArr = Array.from(genders.keys())
+  var data = []
+  var i = 0
+  for (i = 0; i < gendersArr.length; i++) {
+    var key = gendersArr[i]
+    data.push({"name": key, "value": genders.get(key)})
+  }
   return (
     <PieChart width={730} height={250}>
-      <Pie data={genders} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={40} outerRadius={80} fill="#8884d8" />
+      <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={40} outerRadius={80} fill="#8884d8" />
     </PieChart>
   )
 }
