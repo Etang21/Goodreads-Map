@@ -7,7 +7,18 @@ const GenderDemographicsChart = ({genders}) => {
   const data = rechartsDataFromMap(genders)
   return (
     <PieChart width={730} height={250}>
-      <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={40} outerRadius={80} fill="#8884d8" />
+      <Pie
+        data={data}
+        dataKey="value"
+        nameKey="name"
+        cx="50%"
+        cy="50%"
+        innerRadius={40}
+        outerRadius={80}
+        fill="#8884d8"
+        label={label => label.name + ' (' + label.value + ')' }
+        isAnimationActive={false}
+      /> //Disable animation due to label not appearing bug in recharts
     </PieChart>
   )
 }
