@@ -8,7 +8,8 @@ class Body extends React.Component {
     super(props);
     this.state = {
       shelf: [],
-      shelfLoading: true
+      shelfLoading: true,
+      userName: null
     };
   }
 
@@ -20,7 +21,13 @@ class Body extends React.Component {
         this.setState({shelf: data})
         this.setState({shelfLoading: false})
         this.updateDemographicData()
-      })
+    });
+    //Fetch user name and info:
+    fetch('api/v1/user.json?user_id=' + this.props.user_id)
+      .then((response) => { return response.json() })
+      .then((data) => {
+        this.setState({userName: data['name']})
+    });
   }
 
   // For all the books in our state's shelf, fetch and update the demographic data
@@ -68,9 +75,13 @@ class Body extends React.Component {
 
   render() {
     var genders = this.genderDemographics()
+    var welcomeText = "Welcome!"
+    if (this.state.userName != null) {
+      welcomeText = this.state.userName + "'s Shelf:"
+    }
     return (
       <div>
-        <h1>Welcome, user {this.props.user_id}!</h1>
+        <h1>{welcomeText}</h1>
         <GenderDemographicsChart genders={genders}></GenderDemographicsChart>
         <BookTable shelf={this.state.shelf} shelfLoading={this.state.shelfLoading} />
       </div>
