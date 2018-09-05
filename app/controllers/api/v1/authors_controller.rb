@@ -9,17 +9,7 @@ class Api::V1::AuthorsController < ApplicationController
     libThingURL += '&name=' + libthing_author_name(params[:author_name]) # NameFormatHelper
     response = HTTParty.get(libThingURL).to_json
     authorHash = JSON.parse(response)
-    begin
-      authorFacts = authorHash["response"]["ltml"]["item"]["commonknowledge"]["fieldList"]["field"]
-      nationalityFact = authorFacts.select { |fact| fact["name"] == "nationality"} [0]
-      nationality = nationalityFact["versionList"]["version"]["factList"]["fact"]
-      genderFact = authorFacts.select { |fact| fact["name"] == "gender"} [0]
-      gender = genderFact["versionList"]["version"]["factList"]["fact"]
-      @author.hometown = nationality
-      @author.gender = gender
-    rescue StandardError => err
-      puts err
-    end
+    populate_demographics(@author, authorHash)
     render json: @author
   end
 
@@ -30,6 +20,21 @@ class Api::V1::AuthorsController < ApplicationController
 
   def author_params
     params.require(:author).permit(:id, :author_id, :name, :hometown, :gender)
+  end
+
+  def populate_demographics(author, authorHash)
+    begin
+      authorFacts = authorHash["response"]["ltml"]["item"]["commonknowledge"]["fieldList"]["field"]
+      nationalityFact = authorFacts.select { |fact| fact["name"] == "nationality"} [0]
+      nationality = nationalityFact["versionList"]["version"]["factList"]["fact"]
+      genderFact = authorFacts.select { |fact| fact["name"] == "gender"} [0]
+      gender = genderFact["versionList"]["version"]["factList"]["fact"]
+      author.hometown = nationality
+      author.gender = gender
+    rescue StandardError => err
+      puts err
+    end
+    return author
   end
 
 
