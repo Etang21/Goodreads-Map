@@ -1,18 +1,12 @@
 class Api::V1::AuthorsController < ApplicationController
   include LibThingHelper
+  include NameFormatHelper
 
   def index
     @author = Author.new(name: params[:author_name])
-    libThingURL = lib_thing_url
-    puts libThingURL
+    libThingURL = lib_thing_url # from LibThingHelper
     libThingURL += '&method=librarything.ck.getauthor'
-    encoding_options = {
-      :invalid           => :replace,  # Replace invalid byte sequences
-      :undef             => :replace,  # Replace anything not defined in ASCII
-      :replace           => '',        # Use a blank for those replacements
-      :universal_newline => true       # Always break lines with \n
-    }
-    authorName = params[:author_name].encode(Encoding.find('ASCII'), encoding_options)
+    authorName = convert_ascii(params[:author_name])
     authorNames = authorName.split(" ")
     formattedAuthorName = authorNames[-1] + ", " + authorNames[0...-1].join(" ")
     libThingURL += '&name=' + formattedAuthorName
