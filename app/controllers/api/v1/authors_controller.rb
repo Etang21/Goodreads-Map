@@ -6,7 +6,14 @@ class Api::V1::AuthorsController < ApplicationController
     libThingURL = 'http://www.librarything.com/services/rest/1.1/'
     libThingURL += '?method=librarything.ck.getauthor'
     libThingURL += '&apikey=' + libThingKey
-    authorNames = params[:author_name].split(" ")
+    encoding_options = {
+      :invalid           => :replace,  # Replace invalid byte sequences
+      :undef             => :replace,  # Replace anything not defined in ASCII
+      :replace           => '',        # Use a blank for those replacements
+      :universal_newline => true       # Always break lines with \n
+    }
+    authorName = params[:author_name].encode(Encoding.find('ASCII'), encoding_options)
+    authorNames = authorName.split(" ")
     formattedAuthorName = authorNames[-1] + ", " + authorNames[0...-1].join(" ")
     libThingURL += '&name=' + formattedAuthorName
     response = HTTParty.get(libThingURL).to_json

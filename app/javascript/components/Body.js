@@ -33,9 +33,12 @@ class Body extends React.Component {
   // For all the books in our state's shelf, fetch and update the demographic data
   updateDemographicData() {
     this.state.shelf.forEach( (bk) => {
-      fetch('api/v1/authors.json?author_id=' + bk.author_id)
+      fetch('api/v1/authors.json?author_name=' + bk.author)
         .then((response) => { return response.json() })
         .then((data) => {
+          console.log(data)
+          data['author_id'] = bk.author_id
+          console.log(data)
           var newShelf = this.updatedShelf(this.state.shelf, data)
           this.setState({shelf: newShelf})
         })
