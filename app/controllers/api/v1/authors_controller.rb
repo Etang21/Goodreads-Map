@@ -25,12 +25,14 @@ class Api::V1::AuthorsController < ApplicationController
   def populate_demographics(author, authorHash)
     begin
       authorFacts = authorHash["response"]["ltml"]["item"]["commonknowledge"]["fieldList"]["field"]
-      nationalityFact = authorFacts.select { |fact| fact["name"] == "nationality"} [0]
-      nationality = nationalityFact["versionList"]["version"]["factList"]["fact"]
-      genderFact = authorFacts.select { |fact| fact["name"] == "gender"} [0]
-      gender = genderFact["versionList"]["version"]["factList"]["fact"]
-      author.hometown = nationality
-      author.gender = gender
+      nationalityFacts = authorFacts.select { |fact| fact["name"] == "nationality"}
+      if nationalityFacts.length > 0
+        author.hometown = nationalityFacts[0]["versionList"]["version"]["factList"]["fact"]
+      end
+      genderFacts = authorFacts.select { |fact| fact["name"] == "gender"}
+      if genderFacts.length > 0
+        author.gender = genderFacts[0]["versionList"]["version"]["factList"]["fact"]
+      end
     rescue StandardError => err
       puts err
     end
