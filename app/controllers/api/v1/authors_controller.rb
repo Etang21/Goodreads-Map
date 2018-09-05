@@ -4,12 +4,9 @@ class Api::V1::AuthorsController < ApplicationController
 
   def index
     @author = Author.new(name: params[:author_name])
-    libThingURL = lib_thing_url # from LibThingHelper
+    libThingURL = lib_thing_url # LibThingHelper
     libThingURL += '&method=librarything.ck.getauthor'
-    authorName = convert_ascii(params[:author_name])
-    authorNames = authorName.split(" ")
-    formattedAuthorName = authorNames[-1] + ", " + authorNames[0...-1].join(" ")
-    libThingURL += '&name=' + formattedAuthorName
+    libThingURL += '&name=' + libthing_author_name(params[:author_name]) # NameFormatHelper
     response = HTTParty.get(libThingURL).to_json
     authorHash = JSON.parse(response)
     begin
