@@ -1,11 +1,11 @@
 class Api::V1::AuthorsController < ApplicationController
+  include LibThingHelper
 
   def index
     @author = Author.new(name: params[:author_name])
-    libThingKey = 'd231aa37c9b4f5d304a60a3d0ad1dad4'
-    libThingURL = 'http://www.librarything.com/services/rest/1.1/'
-    libThingURL += '?method=librarything.ck.getauthor'
-    libThingURL += '&apikey=' + libThingKey
+    libThingURL = lib_thing_url
+    puts libThingURL
+    libThingURL += '&method=librarything.ck.getauthor'
     encoding_options = {
       :invalid           => :replace,  # Replace invalid byte sequences
       :undef             => :replace,  # Replace anything not defined in ASCII
