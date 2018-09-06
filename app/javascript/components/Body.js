@@ -78,13 +78,12 @@ class Body extends React.Component {
   render() {
     const genders = this.demographicsForKey("gender")
     const countries = this.demographicsForKey("nationality")
-    var welcomeText = "Welcome!"
-    if (this.state.userName != null) {
-      welcomeText = this.state.userName + "'s Shelf:"
-    }
+    const welcomeText = "Your Shelf"
     return (
       <div>
-        <h1>{welcomeText}</h1>
+        <div class="page-header" vertical-align="middle">
+          <h1>{welcomeText}</h1>
+        </div>
         <DemographicsChart dataMap={genders} title={"Gender"}></DemographicsChart>
         <DemographicsChart dataMap={countries} title = {"Country"}></DemographicsChart>
         <BookTable shelf={this.state.shelf} shelfLoading={this.state.shelfLoading} />
