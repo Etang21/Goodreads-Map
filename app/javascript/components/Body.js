@@ -86,10 +86,10 @@ class Body extends React.Component {
         </div>
         <div className="container">
           <div className="row">
-            <div className="col-sm-12 col-md-6">
+            <div className="col-sm-12 col-md-6 col-lg-6">
               <DemographicsChart dataMap={genders} title={"Gender"}></DemographicsChart>
             </div>
-            <div className="col-sm-12 col-md-6">
+            <div className="col-sm-12 col-md-6 col-lg-6">
               <DemographicsChart dataMap={countries} title = {"Country"}></DemographicsChart>
             </div>
           </div>

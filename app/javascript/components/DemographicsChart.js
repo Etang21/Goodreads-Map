@@ -1,40 +1,36 @@
 // Takes in a map from categories to counts, displays as chart
 import React from 'react'
-import {PieChart, Pie, Cell, Label} from 'recharts'
+import {ResponsiveContainer, PieChart, Pie, Cell, Label} from 'recharts'
 
 const DemographicsChart = ({dataMap, title}) => {
   //Takes in map of categories to values, displays chart
   const data = rechartsDataFromMap(dataMap)
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-  //Gets viewport width and height:
-  const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  const outerRadius = Math.min(vh/7, vw/3)
   return (
-    <PieChart width={vw} height={3 * outerRadius}>
-      <Pie
-        data={data}
-        dataKey="value"
-        nameKey="name"
-        cx="50%"
-        cy="50%"
-        innerRadius={0.75 * outerRadius}
-        outerRadius={outerRadius}
-        startAngle={0}
-        endAngle={360}
-        paddingAngle={2}
-        fill="#8884d8"
-        label={label => label.name + ' (' + label.value + ')' }
-        isAnimationActive={false}
-      > //Disable animation due to invisible label bug in recharts
-        {
-          data.map((entry, index) =>
-            <Cell fill={COLORS[index % COLORS.length]} key={index}/>
-          )
-        }
-        <Label value={title} position="center" />
-      </Pie>
-    </PieChart>
+    <ResponsiveContainer width="100%" aspect={1.3}>
+      <PieChart>
+        <Pie
+          data={data}
+          dataKey="value"
+          nameKey="name"
+          cx="50%"
+          cy="50%"
+          outerRadius="70%"
+          innerRadius="50%"
+          paddingAngle={2}
+          fill="#8884d8"
+          label={label => label.name + ' (' + label.value + ')' }
+          isAnimationActive={false}
+        > //Disable animation due to invisible label bug in recharts
+          {
+            data.map((entry, index) =>
+              <Cell fill={COLORS[index % COLORS.length]} key={index}/>
+            )
+          }
+          <Label value={title} position="center" />
+        </Pie>
+      </PieChart>
+    </ResponsiveContainer>
   )
 }
 
