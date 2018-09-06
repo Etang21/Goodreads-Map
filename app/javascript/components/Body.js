@@ -85,8 +85,8 @@ class Body extends React.Component {
     return (
       <div>
         <h1>{welcomeText}</h1>
-        <DemographicsChart dataMap={genders}></DemographicsChart>
-        <DemographicsChart dataMap={countries}></DemographicsChart>
+        <DemographicsChart dataMap={genders} title={"Gender"}></DemographicsChart>
+        <DemographicsChart dataMap={countries} title = {"Country"}></DemographicsChart>
         <BookTable shelf={this.state.shelf} shelfLoading={this.state.shelfLoading} />
       </div>
     )

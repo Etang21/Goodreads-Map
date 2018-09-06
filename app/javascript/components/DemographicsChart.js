@@ -1,8 +1,8 @@
 // Takes in a map from categories to counts, displays as chart
 import React from 'react'
-import {PieChart, Pie, Cell} from 'recharts'
+import {PieChart, Pie, Cell, Label} from 'recharts'
 
-const DemographicsChart = ({dataMap}) => {
+const DemographicsChart = ({dataMap, title}) => {
   //Takes in map of categories to values, displays chart
   const data = rechartsDataFromMap(dataMap)
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -32,6 +32,7 @@ const DemographicsChart = ({dataMap}) => {
             <Cell fill={COLORS[index % COLORS.length]} key={index}/>
           )
         }
+        <Label value={title} position="center" />
       </Pie>
     </PieChart>
   )
