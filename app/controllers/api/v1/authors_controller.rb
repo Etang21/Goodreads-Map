@@ -19,7 +19,7 @@ class Api::V1::AuthorsController < ApplicationController
   private
 
   def author_params
-    params.require(:author).permit(:id, :author_id, :name, :hometown, :gender)
+    params.require(:author).permit(:id, :author_id, :name, :nationality, :gender)
   end
 
   def populate_demographics(author, authorHash)
@@ -27,7 +27,7 @@ class Api::V1::AuthorsController < ApplicationController
       authorFacts = authorHash["response"]["ltml"]["item"]["commonknowledge"]["fieldList"]["field"]
       nationalityFacts = authorFacts.select { |fact| fact["name"] == "nationality"}
       if nationalityFacts.length > 0
-        author.hometown = nationalityFacts[0]["versionList"]["version"]["factList"]["fact"]
+        author.nationality = nationalityFacts[0]["versionList"]["version"]["factList"]["fact"]
       end
       genderFacts = authorFacts.select { |fact| fact["name"] == "gender"}
       if genderFacts.length > 0

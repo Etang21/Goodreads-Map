@@ -3,11 +3,11 @@
 one:
   author_id: 1
   name: MyString
-  hometown: MyString
+  nationality: MyString
   gender: MyString
 
 two:
   author_id: 1
   name: MyString
-  hometown: MyString
+  nationality: MyString
   gender: MyString

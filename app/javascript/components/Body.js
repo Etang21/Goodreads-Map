@@ -56,7 +56,7 @@ class Body extends React.Component {
   bookFromAuthorData(book, author) {
     if (book.author_id == author.author_id) {
       book.gender = author.gender
-      book.hometown = author.hometown
+      book.nationality = author.nationality
     }
     return book
   }

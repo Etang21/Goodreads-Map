@@ -5,11 +5,11 @@ one:
   goodid: 1
   author: MyString
   gender: MyString
-  hometown: MyString
+  nationality: MyString
 
 two:
   title: MyString
   goodid: 1
   author: MyString
   gender: MyString
-  hometown: MyString
+  nationality: MyString
