@@ -1,4 +1,5 @@
 import React from 'react'
+import Navbar from './Navbar'
 import BookTable from './BookTable'
 import DemographicsChart from './DemographicsChart'
 
@@ -81,6 +82,7 @@ class Body extends React.Component {
     const welcomeText = "Your Shelf"
     return (
       <div>
+        <Navbar />
         <h1 className="text-center">{welcomeText}</h1>
         <div className="container">
           <div className="row">
