@@ -23,11 +23,14 @@ class Api::V1::AuthorsController < ApplicationController
   end
 
   def populate_demographics(author, authorHash)
+    # Given an author and LibraryThing hash of their info, updates author's
+    # Gender and nationality, returns author
     begin
       authorFacts = authorHash["response"]["ltml"]["item"]["commonknowledge"]["fieldList"]["field"]
       nationalityFacts = authorFacts.select { |fact| fact["name"] == "nationality"}
       if nationalityFacts.length > 0
-        author.nationality = nationalityFacts[0]["versionList"]["version"]["factList"]["fact"]
+        nationality = nationalityFacts[0]["versionList"]["version"]["factList"]["fact"]
+        author.nationality = format_libthing_nationality(nationality)
       end
       genderFacts = authorFacts.select { |fact| fact["name"] == "gender"}
       if genderFacts.length > 0
@@ -39,6 +42,16 @@ class Api::V1::AuthorsController < ApplicationController
     return author
   end
 
+  def format_libthing_nationality(nationality)
+    # Given nationality in LibraryThing nationality format, returns just a country
+    if nationality.respond_to? :each
+      # Then it's a list of nationalities
+      nationality = nationality[0]
+    end
+    extra_word = " (birth)"
+    nationality.slice! extra_word
+    return nationality
+  end
 
 
 end
