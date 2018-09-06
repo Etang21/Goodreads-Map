@@ -20,8 +20,6 @@ const BookTable = ({shelf, shelfLoading}) => {
             <th scope="col">Author</th>
             <th scope="col">Gender</th>
             <th scope="col">Nationality</th>
-            <th scope="col">Goodreads ID</th>
-            <th scope="col">Author ID</th>
           </tr>
         </thead>
         <tbody>

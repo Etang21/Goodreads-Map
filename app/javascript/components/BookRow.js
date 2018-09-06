@@ -7,8 +7,6 @@ const BookRow = ({book}) => {
       <td>{book.author}</td>
       <td>{book.gender}</td>
       <td>{book.nationality}</td>
-      <td>{book.goodid}</td>
-      <td>{book.author_id}</td>
     </tr>
   )
 }
