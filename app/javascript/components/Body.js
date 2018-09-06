@@ -61,9 +61,9 @@ class Body extends React.Component {
     return book
   }
 
+  // Map of demographic categories to # occurrences in shelf for given key
+  // e.g. Key can be "gender" or "nationality"
   demographicsForKey(key) {
-    // Map of demographic categories to # occurrences in shelf for given key
-    // e.g. Key can be "gender" or "nationality"
     var demographics = new Map()
     var shelf = this.state.shelf
     for (var i = 0; i < shelf.length; i++) {
@@ -78,7 +78,8 @@ class Body extends React.Component {
 
 
   render() {
-    var genders = this.demographicsForKey("gender")
+    const genders = this.demographicsForKey("gender")
+    const countries = this.demographicsForKey("nationality")
     var welcomeText = "Welcome!"
     if (this.state.userName != null) {
       welcomeText = this.state.userName + "'s Shelf:"
@@ -87,6 +88,7 @@ class Body extends React.Component {
       <div>
         <h1>{welcomeText}</h1>
         <DemographicsChart dataMap={genders}></DemographicsChart>
+        <DemographicsChart dataMap={countries}></DemographicsChart>
         <BookTable shelf={this.state.shelf} shelfLoading={this.state.shelfLoading} />
       </div>
     )
