@@ -81,9 +81,7 @@ class Body extends React.Component {
     const welcomeText = "Your Shelf"
     return (
       <div>
-        <div class="page-header" vertical-align="middle">
-          <h1>{welcomeText}</h1>
-        </div>
+        <h1 className="text-center">{welcomeText}</h1>
         <DemographicsChart dataMap={genders} title={"Gender"}></DemographicsChart>
         <DemographicsChart dataMap={countries} title = {"Country"}></DemographicsChart>
         <BookTable shelf={this.state.shelf} shelfLoading={this.state.shelfLoading} />
