@@ -22,7 +22,7 @@ const DemographicsChart = ({dataMap, title}) => {
         outerRadius={outerRadius}
         startAngle={0}
         endAngle={180}
-        paddingAngle={5}
+        paddingAngle={2}
         fill="#8884d8"
         label={label => label.name + ' (' + label.value + ')' }
         isAnimationActive={false}
