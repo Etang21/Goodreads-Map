@@ -81,15 +81,15 @@ class Body extends React.Component {
     const welcomeText = "Your Shelf"
     return (
       <div>
-        <div class="page-header" vertical-align="middle">
+        <div className="page-header" vertical-align="middle">
           <h1>{welcomeText}</h1>
         </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 col-md-6">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-12 col-md-6">
               <DemographicsChart dataMap={genders} title={"Gender"}></DemographicsChart>
             </div>
-            <div class="col-sm-12 col-md-6">
+            <div className="col-sm-12 col-md-6">
               <DemographicsChart dataMap={countries} title = {"Country"}></DemographicsChart>
             </div>
           </div>
