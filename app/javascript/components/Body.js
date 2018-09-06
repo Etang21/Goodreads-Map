@@ -36,9 +36,7 @@ class Body extends React.Component {
       fetch('api/v1/authors.json?author_name=' + bk.author)
         .then((response) => { return response.json() })
         .then((data) => {
-          console.log(data)
           data['author_id'] = bk.author_id
-          console.log(data)
           var newShelf = this.updatedShelf(this.state.shelf, data)
           this.setState({shelf: newShelf})
         })
