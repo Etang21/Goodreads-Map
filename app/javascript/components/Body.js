@@ -1,6 +1,6 @@
 import React from 'react'
 import BookTable from './BookTable'
-import GenderDemographicsChart from './GenderDemographicsChart'
+import DemographicsChart from './DemographicsChart'
 
 class Body extends React.Component {
 
@@ -61,23 +61,24 @@ class Body extends React.Component {
     return book
   }
 
-  // Calculates gender percentages from the current shelf as dictionary
-  genderDemographics() {
-    var genders = new Map()
+  demographicsForKey(key) {
+    // Map of demographic categories to # occurrences in shelf for given key
+    // e.g. Key can be "gender" or "nationality"
+    var demographics = new Map()
     var shelf = this.state.shelf
     for (var i = 0; i < shelf.length; i++) {
-      var gender = shelf[i]["gender"] || "unknown"
-      if (!genders.has(gender)) {
-        genders.set(gender, 0)
+      var category = shelf[i][key] || "unknown"
+      if (!demographics.has(category)) {
+        demographics.set(category, 0)
       }
-      genders.set(gender, genders.get(gender) + 1)
+      demographics.set(category, demographics.get(category) + 1)
     }
-    return genders
+    return demographics
   }
 
 
   render() {
-    var genders = this.genderDemographics()
+    var genders = this.demographicsForKey("gender")
     var welcomeText = "Welcome!"
     if (this.state.userName != null) {
       welcomeText = this.state.userName + "'s Shelf:"
@@ -85,7 +86,7 @@ class Body extends React.Component {
     return (
       <div>
         <h1>{welcomeText}</h1>
-        <GenderDemographicsChart genders={genders}></GenderDemographicsChart>
+        <DemographicsChart dataMap={genders}></DemographicsChart>
         <BookTable shelf={this.state.shelf} shelfLoading={this.state.shelfLoading} />
       </div>
     )

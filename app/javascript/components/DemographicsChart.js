@@ -1,10 +1,10 @@
-// Takes in a dictionary from genders to counts, displays as chart
+// Takes in a map from categories to counts, displays as chart
 import React from 'react'
 import {PieChart, Pie, Cell} from 'recharts'
 
-const GenderDemographicsChart = ({genders}) => {
-  //Takes in map of genders to values, displays chart
-  const data = rechartsDataFromMap(genders)
+const DemographicsChart = ({dataMap}) => {
+  //Takes in map of categories to values, displays chart
+  const data = rechartsDataFromMap(dataMap)
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
   //Gets viewport width and height:
   const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -53,4 +53,4 @@ const rechartsDataFromMap = (dataMap) => {
   return data
 }
 
-export default GenderDemographicsChart
+export default DemographicsChart
