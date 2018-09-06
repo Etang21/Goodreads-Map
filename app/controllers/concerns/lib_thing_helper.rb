@@ -1,4 +1,4 @@
-module LibThingHelper
+module ::LibThingHelper
   extend ActiveSupport::Concern
 
   included do

@@ -1,6 +1,6 @@
 class Api::V1::AuthorsController < ApplicationController
-  include LibThingHelper
-  include NameFormatHelper
+  include ::LibThingHelper
+  include ::NameFormatHelper
 
   def index
     @author = Author.new(name: params[:author_name])

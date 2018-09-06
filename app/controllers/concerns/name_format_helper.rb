@@ -1,4 +1,4 @@
-module NameFormatHelper
+module ::NameFormatHelper
   extend ActiveSupport::Concern
 
   included do
