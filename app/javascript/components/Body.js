@@ -84,8 +84,16 @@ class Body extends React.Component {
         <div class="page-header" vertical-align="middle">
           <h1>{welcomeText}</h1>
         </div>
-        <DemographicsChart dataMap={genders} title={"Gender"}></DemographicsChart>
-        <DemographicsChart dataMap={countries} title = {"Country"}></DemographicsChart>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <DemographicsChart dataMap={genders} title={"Gender"}></DemographicsChart>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <DemographicsChart dataMap={countries} title = {"Country"}></DemographicsChart>
+            </div>
+          </div>
+        </div>
         <BookTable shelf={this.state.shelf} shelfLoading={this.state.shelfLoading} />
       </div>
     )
