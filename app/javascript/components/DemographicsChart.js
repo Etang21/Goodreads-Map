@@ -9,19 +9,19 @@ const DemographicsChart = ({dataMap, title}) => {
   //Gets viewport width and height:
   const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
   const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  const outerRadius = Math.min(vh/4, vw/3)
+  const outerRadius = Math.min(vh/7, vw/3)
   return (
-    <PieChart width={vw} height={2 * outerRadius}>
+    <PieChart width={vw} height={3 * outerRadius}>
       <Pie
         data={data}
         dataKey="value"
         nameKey="name"
         cx="50%"
-        cy="75%"
+        cy="50%"
         innerRadius={0.75 * outerRadius}
         outerRadius={outerRadius}
         startAngle={0}
-        endAngle={180}
+        endAngle={360}
         paddingAngle={2}
         fill="#8884d8"
         label={label => label.name + ' (' + label.value + ')' }
