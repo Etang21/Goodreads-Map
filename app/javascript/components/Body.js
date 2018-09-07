@@ -15,6 +15,7 @@ class Body extends React.Component {
     };
     this.goToShelf = this.goToShelf.bind(this);
     this.goToAbout = this.goToAbout.bind(this);
+    this.goToSuggestions = this.goToSuggestions.bind(this);
   }
 
 /* UPDATING SHELF AND DEMOGRAPHICS */
@@ -92,6 +93,10 @@ class Body extends React.Component {
     this.setState({page: "about"})
   }
 
+  goToSuggestions() {
+    this.setState({page: "suggestions"})
+  }
+
 /* RENDERING PAGES */
 
   //Renders the shelf dashboard
@@ -111,9 +116,12 @@ class Body extends React.Component {
     else if (this.state.page == "about") {
       body = <About />
     }
+    else if (this.state.page == "suggestions") {
+      body = <h1>Recommendations Coming Soon</h1>
+    }
     return (
       <div>
-        <Navbar goToAbout={this.goToAbout} goToShelf={this.goToShelf}/>
+        <Navbar goToAbout={this.goToAbout} goToShelf={this.goToShelf} goToSuggestions={this.goToSuggestions}/>
         {body}
       </div>
     )
