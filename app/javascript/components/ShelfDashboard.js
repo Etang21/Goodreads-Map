@@ -8,7 +8,7 @@ const ShelfDashboard = ({shelf, shelfLoading, genders, countries}) => {
   const welcomeText = "Your Shelf"
   return (
     <div>
-      <h1 className="text-center">{welcomeText}</h1>
+      <h1 className="my-4 text-center">{welcomeText}</h1>
       <div className="container">
         <div className="row">
           <div className="col-sm-12 col-md-6 col-lg-6">
