@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from './Navbar'
-import BookTable from './BookTable'
-import DemographicsChart from './DemographicsChart'
+import ShelfDashboard from './ShelfDashboard'
 
 class Body extends React.Component {
 
@@ -10,7 +9,7 @@ class Body extends React.Component {
     this.state = {
       shelf: [],
       shelfLoading: true,
-      userName: null
+      userName: null,
     };
   }
 
@@ -79,22 +78,11 @@ class Body extends React.Component {
   render() {
     const genders = this.demographicsForKey("gender")
     const countries = this.demographicsForKey("nationality")
-    const welcomeText = "Your Shelf"
     return (
       <div>
         <Navbar />
-        <h1 className="text-center">{welcomeText}</h1>
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12 col-md-6 col-lg-6">
-              <DemographicsChart dataMap={genders} title={"Gender"}></DemographicsChart>
-            </div>
-            <div className="col-sm-12 col-md-6 col-lg-6">
-              <DemographicsChart dataMap={countries} title = {"Country"}></DemographicsChart>
-            </div>
-          </div>
-        </div>
-        <BookTable shelf={this.state.shelf} shelfLoading={this.state.shelfLoading} />
+        <ShelfDashboard shelf={this.state.shelf} shelfLoading={this.state.shelfLoading}
+           genders={genders} countries={countries} />
       </div>
     )
   }
