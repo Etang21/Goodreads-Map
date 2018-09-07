@@ -1,13 +1,14 @@
 import React from 'react'
 import Navbar from './Navbar'
 import ShelfDashboard from './ShelfDashboard'
+import About from './About'
 
 class Body extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      page: "shelf",
+      page: "about",
       shelf: [],
       shelfLoading: true,
       userName: null,
@@ -96,6 +97,9 @@ class Body extends React.Component {
   render() {
     if (this.state.page == "shelf") {
       return this.shelfDashboard()
+    }
+    else if (this.state.page == "about") {
+      return <About />
     }
   }
 }
