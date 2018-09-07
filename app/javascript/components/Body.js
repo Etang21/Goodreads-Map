@@ -7,11 +7,14 @@ class Body extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      page: "shelf",
       shelf: [],
       shelfLoading: true,
       userName: null,
     };
   }
+
+/* UPDATING SHELF AND DEMOGRAPHICS */
 
   componentDidMount() {
     //Fetch shelf, update all demographic data:
@@ -74,8 +77,10 @@ class Body extends React.Component {
     return demographics
   }
 
+/* RENDERING PAGES */
 
-  render() {
+  //Renders the shelf dashboard
+  shelfDashboard() {
     const genders = this.demographicsForKey("gender")
     const countries = this.demographicsForKey("nationality")
     return (
@@ -85,6 +90,13 @@ class Body extends React.Component {
            genders={genders} countries={countries} />
       </div>
     )
+  }
+
+
+  render() {
+    if (this.state.page == "shelf") {
+      return this.shelfDashboard()
+    }
   }
 }
 
