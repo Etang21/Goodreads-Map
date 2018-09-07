@@ -13,6 +13,8 @@ class Body extends React.Component {
       shelfLoading: true,
       userName: null,
     };
+    this.goToShelf = this.goToShelf.bind(this);
+    this.goToAbout = this.goToAbout.bind(this);
   }
 
 /* UPDATING SHELF AND DEMOGRAPHICS */
@@ -32,8 +34,6 @@ class Body extends React.Component {
       .then((data) => {
         this.setState({userName: data['name']})
     });
-    this.goToShelf = this.goToShelf.bind(this);
-    this.goToAbout = this.goToAbout.bind(this);
   }
 
   // For all the books in our state's shelf, fetch and update the demographic data
@@ -111,7 +111,7 @@ class Body extends React.Component {
     }
     return (
       <div>
-        <Navbar />
+        <Navbar goToAbout={this.goToAbout} goToShelf={this.goToShelf}/>
         {body}
       </div>
     )
