@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './Navbar'
 import ShelfDashboard from './ShelfDashboard'
 import About from './About'
+import Recommendations from './Recommendations'
 
 class Body extends React.Component {
 
@@ -15,7 +16,7 @@ class Body extends React.Component {
     };
     this.goToShelf = this.goToShelf.bind(this);
     this.goToAbout = this.goToAbout.bind(this);
-    this.goToSuggestions = this.goToSuggestions.bind(this);
+    this.goToRecommendations = this.goToRecommendations.bind(this);
   }
 
 /* UPDATING SHELF AND DEMOGRAPHICS */
@@ -93,8 +94,8 @@ class Body extends React.Component {
     this.setState({page: "about"})
   }
 
-  goToSuggestions() {
-    this.setState({page: "suggestions"})
+  goToRecommendations() {
+    this.setState({page: "recommendations"})
   }
 
 /* RENDERING PAGES */
@@ -116,12 +117,12 @@ class Body extends React.Component {
     else if (this.state.page == "about") {
       body = <About />
     }
-    else if (this.state.page == "suggestions") {
-      body = <h1>Recommendations Coming Soon</h1>
+    else if (this.state.page == "recommendations") {
+      body = <Recommendations />
     }
     return (
       <div>
-        <Navbar goToAbout={this.goToAbout} goToShelf={this.goToShelf} goToSuggestions={this.goToSuggestions}/>
+        <Navbar goToAbout={this.goToAbout} goToShelf={this.goToShelf} goToRecommendations={this.goToRecommendations}/>
         {body}
       </div>
     )
