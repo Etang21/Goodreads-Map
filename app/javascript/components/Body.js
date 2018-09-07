@@ -37,8 +37,10 @@ class Body extends React.Component {
   }
 
   // For all the books in our state's shelf, fetch and update the demographic data
+  // We cap the updates at MAX_BOOKS to avoid overloading API
   updateDemographicData() {
-    this.state.shelf.forEach( (bk) => {
+    const MAX_BOOKS = 300
+    this.state.shelf.slice(0, MAX_BOOKS).forEach( (bk) => {
       fetch('api/v1/authors.json?author_name=' + bk.author)
         .then((response) => { return response.json() })
         .then((data) => {
