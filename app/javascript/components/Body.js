@@ -32,6 +32,8 @@ class Body extends React.Component {
       .then((data) => {
         this.setState({userName: data['name']})
     });
+    this.goToShelf = this.goToShelf.bind(this);
+    this.goToAbout = this.goToAbout.bind(this);
   }
 
   // For all the books in our state's shelf, fetch and update the demographic data
@@ -78,6 +80,16 @@ class Body extends React.Component {
     return demographics
   }
 
+/* NAVIGATING PAGES */
+
+  goToShelf() {
+    this.setState({page: "shelf"})
+  }
+
+  goToAbout() {
+    this.setState({page: "about"})
+  }
+
 /* RENDERING PAGES */
 
   //Renders the shelf dashboard
@@ -99,7 +111,13 @@ class Body extends React.Component {
       return this.shelfDashboard()
     }
     else if (this.state.page == "about") {
-      return <About />
+      return (
+        <div>
+          <Navbar />
+          <About />
+          <button onClick={this.goToShelf}>shelf me bud</button>
+        </div>
+      )
     }
   }
 }
