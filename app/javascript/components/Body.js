@@ -8,7 +8,7 @@ class Body extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "about",
+      page: "shelf",
       shelf: [],
       shelfLoading: true,
       userName: null,
@@ -96,29 +96,25 @@ class Body extends React.Component {
   shelfDashboard() {
     const genders = this.demographicsForKey("gender")
     const countries = this.demographicsForKey("nationality")
-    return (
-      <div>
-        <Navbar />
-        <ShelfDashboard shelf={this.state.shelf} shelfLoading={this.state.shelfLoading}
+    return <ShelfDashboard shelf={this.state.shelf} shelfLoading={this.state.shelfLoading}
            genders={genders} countries={countries} />
-      </div>
-    )
   }
 
 
   render() {
+    var body = null
     if (this.state.page == "shelf") {
-      return this.shelfDashboard()
+      body = this.shelfDashboard()
     }
     else if (this.state.page == "about") {
-      return (
-        <div>
-          <Navbar />
-          <About />
-          <button onClick={this.goToShelf}>shelf me bud</button>
-        </div>
-      )
+      body = <About />
     }
+    return (
+      <div>
+        <Navbar />
+        {body}
+      </div>
+    )
   }
 }
 
