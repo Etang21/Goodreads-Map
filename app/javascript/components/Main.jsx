@@ -1,3 +1,8 @@
+/* Handles various authentication cases from user.
+  Login is largely deprecated, used only if user rejects authentication.
+  Body is where navbar, dashboard etc. are rendered.
+*/
+
 import React from 'react'
 import Body from './Body'
 import Login from './Login'
