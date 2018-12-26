@@ -39,8 +39,6 @@ gem 'oauth', '~> 0.5.1'
 gem 'httparty', '~> 0.13.7'
 # Awesome Print for pretty printing
 gem 'awesome_print', '~> 1.8.0'
-# Seed Dump for storing book seeds
-gem 'seed_dump'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
