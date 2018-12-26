@@ -8,6 +8,7 @@
 
 # Here we seed with potential recommendations from existing lists
 require 'goodreads'
+require 'awesome_print'
 
 Goodreads.configure(
      api_key: "msEIA0FG34FG9peoBVH5g",
@@ -22,9 +23,18 @@ shelf = client.shelf(1095613, 'india')
 shelf.books.each do |item|
   puts item.book.id
   book_info = client.book(item.book.id)
-  puts book_info.popular_shelves
+  ap book_info
+  book = Book.find_or_create_by title: book_info.title, goodid: book_info.id
+  if book_info.authors.author.is_a?(Array) then
+    book.author = book_info.authors.author[0].name
+    book.author_id = book_info.authors.author[0].id
+  else
+    book.author = book_info.authors.author.name
+    book.author_id = book_info.authors.author.id
+  end
+  book.save
   book_info.popular_shelves.shelf.each do |s|
-    puts s
-    Genre.create(name: s.name)
+    genre = Genre.find_or_create_by(name: s.name)
+    genre.books << book
   end
 end

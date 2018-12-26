@@ -37,6 +37,8 @@ gem 'react-rails', '~> 1.7', '>= 1.7.1'
 gem 'oauth', '~> 0.5.1'
 # Use HTTParty for fetching in Ruby
 gem 'httparty', '~> 0.13.7'
+# Awesome Print for pretty printing
+gem 'awesome_print', '~> 1.8.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
